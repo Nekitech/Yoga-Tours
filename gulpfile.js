@@ -39,7 +39,7 @@ function cleanDist() {
 function browsersync() {
     browserSync.init({
         server: {
-            baseDir:'app/' // директория, в которой создается локальный сервер и из которой запускается index.html
+            baseDir:'dist/' // директория, в которой создается локальный сервер и из которой запускается index.html
         }
     })
     
@@ -56,7 +56,7 @@ function fonts() {
 }
 
 function images() {
-    return src('app/images/**/*')
+    return src('app/img/**/*')
         .pipe(imagemin(
             [
                 imagemin.gifsicle({interlaced: true}),
@@ -70,11 +70,11 @@ function images() {
                 })
             ]
         ))
-        .pipe(dest('dist/images'))
+        .pipe(dest('dist/img'))
         .pipe(webp({
             quality: 70
         }))
-        .pipe(dest('dist/images'))
+        .pipe(dest('dist/img'))
 }
 
 function scripts() { 
